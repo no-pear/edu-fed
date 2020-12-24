@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <h1 class="hello">hello world</h1>
-    <!-- 跟路由出口 -->
+    <!-- 根路由出口 -->
     <router-view/>
   </div>
 </template>
