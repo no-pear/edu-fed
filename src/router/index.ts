@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Layout from '@/layout/index.vue'
+import store from '@/store'
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,9 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     component: Layout,
+    meta: {
+      requiresAuth: true
+    },
     children: [
       {
         path: '', // 默认子路由
@@ -66,6 +70,32 @@ const routes: Array<RouteConfig> = [
 
 const router = new VueRouter({
   routes
+})
+
+/**
+ * 全局前置守卫
+ * to: Route: 即将要进入的目标 路由对象
+ * from: Route: 当前导航正要离开的路由
+ * next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
+ */
+router.beforeEach((to, from, next) => {
+  // console.log('to--->', to)
+  // console.log('from--->', from)
+  // to.matched 是一个数组(匹配到的路由信息)
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.state.user) {
+      next({
+        path: '/login',
+        query: { // 通过 url 传递查询字符串参数
+          redirect: to.fullPath // 把登录成功需要返回的页面告诉登录页面
+        }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

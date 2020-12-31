@@ -1,6 +1,7 @@
 <template>
   <div class="aside">
     <el-menu
+      default-active=''
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
