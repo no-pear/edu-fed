@@ -28,6 +28,7 @@ export default Vue.extend({
     return {
       form: {
         phone: '15510792995',
+        // phone: '18201288771',
         password: '111111'
       },
       isLoginLoading: false,
@@ -61,7 +62,7 @@ export default Vue.extend({
         // })
         const { data } = await login(this.form)
         // console.log(data)
-        // 3. 处理请求结构
+        // 3. 处理请求结果
         // 成功：跳转到首页
         // 失败：给出提示
         if (data.state !== 1) {

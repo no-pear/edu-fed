@@ -61,10 +61,10 @@ export default Vue.extend({
   name: 'AppAside',
   methods: {
     handleOpen (key: string, keyPath: string) {
-      console.log(key, keyPath)
+      // console.log(key, keyPath)
     },
     handleClose (key: string, keyPath: string) {
-      console.log(key, keyPath)
+      // console.log(key, keyPath)
     }
   }
 })

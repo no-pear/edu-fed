@@ -62,7 +62,24 @@ const routes: Array<RouteConfig> = [
       {
         path: '/menu/create',
         name: 'menu-create',
-        component: () => import(/* webpackChunkName: 'menu-create-edit' */ '@/views/menu/create.vue')
+        component: () => import(/* webpackChunkName: 'menu-create' */ '@/views/menu/create.vue')
+      },
+      {
+        path: '/menu/:id/eidt',
+        name: 'menu-edit',
+        component: () => import(/* webpackChunkName: 'menu-edit' */ '@/views/menu/edit.vue')
+      },
+      {
+        path: '/role/:roleId/alloc-menu',
+        name: 'alloc-menu',
+        component: () => import(/* webpackChunkName: 'alloc-menu' */ '@/views/role/alloc-menu.vue'),
+        props: true // 将路由路径参数映射到组件的 props 数据中
+      },
+      {
+        path: '/role/:roleId/alloc-resource',
+        name: 'alloc-resource',
+        component: () => import(/* webpackChunkName: 'alloc-resource' */ '@/views/role/alloc-resource.vue'),
+        props: true // 将路由路径参数映射到组件的 props 数据中
       }
     ]
   },
